@@ -1,26 +1,31 @@
 package Applications.SPI.RunTestScripts;
 
-import Applications.SPI.PostAndResponse.postAndGetResponseFromSpiLogin;
+import Applications.SPI.GetReponse.getEform;
+import Applications.SPI.GetReponse.getSpiLogin;
+import Applications.SPI.PostRequest.postSpiLogin;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class TestUsersCredentialsInSPILogin {
 
-    postAndGetResponseFromSpiLogin action;
+    postSpiLogin postSpiAction;
+    getSpiLogin getSpiAction;
+    getEform getEformAction;
+
     public TestUsersCredentialsInSPILogin(){
-        action = new postAndGetResponseFromSpiLogin();
+        postSpiAction = new postSpiLogin();
+        getSpiAction = new getSpiLogin();
+        getEformAction = new getEform();
     }
 
    @Test
     public void isTheUserSuccessfullyLogin(){
-       Assert.assertTrue("Please see Error Below", Boolean.parseBoolean(action.userLoginResponse()));
+       Assert.assertTrue("Please see Error Below", Boolean.parseBoolean(postSpiAction.userLoginResponse()));
     }
 
     @Test
-    public void getTheSpiSessionId(){
-       action.gettingTheSpiSessionId();
-       Assert.assertNotNull(action.gettingTheSpiSessionId());
+    public void isTheUserSuccessfullyReachTheEformPage(){
+        System.out.println(getEformAction.gettingTheEformSessionId());
     }
-
 
 }
